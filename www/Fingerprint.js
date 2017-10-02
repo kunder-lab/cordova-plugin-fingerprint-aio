@@ -11,15 +11,15 @@ Fingerprint.prototype.show = function (params, successCallback, errorCallback) {
   );
 };
 
-Fingerprint.prototype.isAvailable = function (successCallback, errorCallback) {
+Fingerprint.prototype.isAvailable = function (params, successCallback, errorCallback) {
   cordova.exec(
     successCallback,
     errorCallback,
     "Fingerprint",
     "isAvailable",
-    [{}]
+    [params]
   );
 };
 
-Fingerprint = new Fingerprint();
+var Fingerprint = new Fingerprint();
 module.exports = Fingerprint;

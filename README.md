@@ -65,17 +65,18 @@ Fingerprint.isAvailable(isAvailableSuccess, isAvailableError);
 ### Show authentication dialogue
 ```javascript
 Fingerprint.show({
-      clientId: "Fingerprint-Demo",
-      clientSecret: "password" //Only necessary for Android
-    }, successCallback, errorCallback);
+  disableBackup: true, //Disable android fallback password/pin/pattern authentication
+  publicKey: 'public key to generate public/private key',
+  secretString: 'Some string you want to encrypt or decrypt with fingerprint',
+  encryptType: 'ENC' //"ENC": encrypt "DEC": decrypt, default "ENC"
+}, successCallback, defer.reject);
+function successCallback(){
+  alert("Authentication successfull");
+}
 
-    function successCallback(){
-      alert("Authentication successfull");
-    }
-
-    function errorCallback(err){
-      alert("Authentication invalid " + err);
-    }
+function errorCallback(err){
+  alert("Authentication invalid " + err);
+}
 ```
 **Optional parameters**
 
