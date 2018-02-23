@@ -97,7 +97,7 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
             @Override
             public void onClick(View view) {
                 Fingerprint.onCancelled();
-                dismiss();
+                dismissAllowingStateLoss();
             }
         });
 
@@ -172,8 +172,8 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
     private void goToBackup() {
         if(disableBackup)
         {
-            Fingerprint.onCancelled(); 
-            dismiss();
+            Fingerprint.onCancelled();
+            dismissAllowingStateLoss();
         }
         else{
             mStage = Stage.BACKUP;
@@ -233,7 +233,7 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
                 // operation. Go to error/cancellation flow.
                 Fingerprint.onCancelled();
             }
-            dismiss();
+            dismissAllowingStateLoss();
         }
     }
 
@@ -242,7 +242,7 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
         // Callback from FingerprintUiHelper. Let the activity know that authentication was
         // successful.
         Fingerprint.onAuthenticated(true /* withFingerprint */);
-        dismiss();
+        dismissAllowingStateLoss();
     }
 
     @Override
